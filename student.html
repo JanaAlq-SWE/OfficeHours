@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dashboard &ndash; OfficeHours
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+ </head>
+ <body hidden="">
+  <div class="app-shell">
+   <aside class="sidebar">
+    <a class="brand" href="student.html">
+     <span class="logo">
+      ◷
+     </span>
+     OfficeHours
+    </a>
+    <nav aria-label="Main navigation" class="nav">
+     <a class="active" href="student.html">
+      <span class="nav-icon">
+       ▦
+      </span>
+      Dashboard
+     </a>
+     <a href="profile.html"><span class="nav-icon">☺</span> Profile</a>
+    </nav>
+   </aside>
+   <div class="workspace">
+    <header class="topbar">
+     <span class="topbar-tag">
+      OfficeHours / Dashboard
+     </span>
+     <div class="user">
+      <span class="avatar" id="header-initials" style="width:32px;height:32px;border-radius:11px">
+       OH
+      </span>
+      <strong id="user-name">
+      </strong>
+      <button class="btn ghost small" id="logout-btn" type="button">Log out</button>
+     </div>
+    </header>
+    <main class="container structured">
+     <div class="page-lead">
+      <div>
+       <p class="eyebrow">
+        STUDENT WORKSPACE
+       </p>
+       <h1>
+        Book an office hour
+       </h1>
+       <p class="sub">
+        Choose an available date, then select a time with your instructor.
+       </p>
+      </div>
+     </div>
+     <section class="welcome-strip">
+      <div>
+       <span class="welcome-kicker">
+        YOUR SCHEDULE, SIMPLIFIED
+       </span>
+       <h2>
+        Plan your next conversation.
+       </h2>
+       <p>
+        Find open office hours in three easy steps: pick a day, choose a session, confirm.
+       </p>
+      </div>
+      <span aria-hidden="true" class="welcome-icon">
+       ✦
+      </span>
+     </section>
+     <div class="stats two-stats">
+      <div class="stat accent-blue">
+       <span class="label">
+        Available sessions
+       </span>
+       <span class="value" id="available-count">
+        &mdash;
+       </span>
+      </div>
+      <div class="stat accent-violet">
+       <span class="label">
+        Your role
+       </span>
+       <span class="value stat-word">
+        Student
+       </span>
+      </div>
+     </div>
+     <!-- PBI-12: search for an instructor by name or department -->
+     <section aria-label="Search instructors" class="card search-panel">
+      <label for="instructor-search" class="search-label">Search by instructor name or department</label>
+      <div class="search-row">
+       <input id="instructor-search" type="search" placeholder="e.g. Sara or Software Engineering" autocomplete="off" maxlength="60"/>
+       <button class="btn ghost small" id="clear-search" type="button" hidden>Clear</button>
+      </div>
+      <p class="sub" id="search-summary" aria-live="polite"></p>
+     </section>
+     <section aria-label="Choose a booking date" class="card calendar-panel">
+      <div class="section-head">
+       <div>
+        <p class="eyebrow">
+         01 &middot; PICK A DAY
+        </p>
+        <h2>
+         Select a date
+        </h2>
+        <p class="sub">
+         Colored dates have available sessions.
+        </p>
+       </div>
+       <div class="month-switch">
+        <button aria-label="Previous month" class="icon-button" id="prev-month" type="button">
+         &lsaquo;
+        </button>
+        <strong id="month-label">
+        </strong>
+        <button aria-label="Next month" class="icon-button" id="next-month" type="button">
+         &rsaquo;
+        </button>
+       </div>
+      </div>
+      <div class="calendar-legend">
+       <span>
+        <i class="legend-dot available">
+        </i>
+        Available dates
+       </span>
+       <span>
+        <i class="legend-dot selected">
+        </i>
+        Selected date
+       </span>
+      </div>
+      <div aria-hidden="true" class="weekday-grid">
+       <span>
+        Sun
+       </span>
+       <span>
+        Mon
+       </span>
+       <span>
+        Tue
+       </span>
+       <span>
+        Wed
+       </span>
+       <span>
+        Thu
+       </span>
+       <span>
+        Fri
+       </span>
+       <span>
+        Sat
+       </span>
+      </div>
+      <div aria-label="Available dates" class="calendar-grid" id="calendar-grid" role="group">
+      </div>
+     </section>
+     <section class="booking-results" id="sessions-section">
+      <div class="section-head">
+       <div>
+        <p class="eyebrow">
+         02 &middot; CHOOSE A TIME
+        </p>
+        <h2 id="selected-date-title">
+         Available times
+        </h2>
+        <p class="sub" id="selected-date-sub">
+         Choose a highlighted day above to browse available slots.
+        </p>
+       </div>
+       <button class="btn ghost small" id="refresh-btn" type="button">
+        &orarr; Refresh
+       </button>
+      </div>
+      <div class="message" hidden="" id="message">
+      </div>
+      <div class="session-list" id="available-list">
+       <p class="empty">
+        Loading available office hours&hellip;
+       </p>
+      </div>
+     </section>
+    
+     <!-- PBI-10: My upcoming appointments / PBI-14: Cancel -->
+     <section class="booking-results" id="my-section">
+      <div class="section-head">
+       <div>
+        <p class="eyebrow">03 &middot; MY APPOINTMENTS</p>
+        <h2>My upcoming appointments (<span id="my-count">0</span>)</h2>
+        <p class="sub">Your booked office hours. You can reschedule or cancel an appointment before it starts.</p>
+       </div>
+      </div>
+      <div class="message" hidden="" id="my-message"></div>
+      <div class="session-list" id="my-appointments"><p class="empty">Loading&hellip;</p></div>
+     </section>
+
+    </main>
+    <dialog id="confirm-dialog">
+     <h3>
+      Confirm your booking
+     </h3>
+     <div id="confirm-body">
+     </div>
+     <!-- PBI-15: optional topic for the meeting -->
+     <label class="topic-field" for="booking-topic">Topic you want to discuss <span class="hint">(optional)</span>
+      <textarea id="booking-topic" maxlength="300" rows="3" placeholder="e.g. Questions about Assignment 2"></textarea>
+     </label>
+     <div class="dialog-actions">
+      <button class="btn ghost" id="cancel-btn">
+       Cancel
+      </button>
+      <button class="btn" id="confirm-btn">
+       Confirm booking
+      </button>
+     </div>
+    </dialog>
+    <!-- PBI-13: reschedule an appointment -->
+    <dialog id="reschedule-dialog">
+     <h3>Reschedule appointment</h3>
+     <div id="reschedule-current"></div>
+     <p class="sub">Choose a new available time with the same instructor:</p>
+     <div id="reschedule-options" class="reschedule-options"></div>
+     <div class="message" hidden="" id="reschedule-message"></div>
+     <div class="dialog-actions">
+      <button class="btn ghost" id="reschedule-cancel" type="button">Close</button>
+      <button class="btn" id="reschedule-confirm" type="button" disabled>Confirm new time</button>
+     </div>
+    </dialog>
+   </div>
+  </div>
+  <script src="js/student.js" type="module">
+  </script>
+ </body>
+</html>

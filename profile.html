@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Profile &ndash; OfficeHours</title>
+  <link href="css/style.css" rel="stylesheet"/>
+ </head>
+ <body hidden="">
+  <div class="app-shell">
+   <aside class="sidebar">
+    <a class="brand" data-dashboard-link href="index.html"><span class="logo">◷</span> OfficeHours</a>
+    <nav aria-label="Main navigation" class="nav">
+     <a data-dashboard-link href="index.html"><span class="nav-icon">▦</span> Dashboard</a>
+     <a class="active" href="profile.html"><span class="nav-icon">☺</span> Profile</a>
+    </nav>
+   </aside>
+   <div class="workspace">
+    <header class="topbar">
+     <span class="topbar-tag">OfficeHours / Profile</span>
+     <div class="user">
+      <span class="avatar" id="header-initials" style="width:32px;height:32px;border-radius:11px">OH</span>
+      <strong id="user-name"></strong>
+      <button class="btn ghost small" id="logout-btn" type="button">Log out</button>
+     </div>
+    </header>
+    <main class="container structured">
+     <div class="page-lead">
+      <div>
+       <p class="eyebrow">MY ACCOUNT</p>
+       <h1>Profile</h1>
+       <p class="sub">View your account details and update your name (and department for instructors).</p>
+      </div>
+     </div>
+     <!-- PBI-17: View and update my profile -->
+     <section class="card form-section">
+      <div class="section-head">
+       <div>
+        <p class="eyebrow">ACCOUNT DETAILS</p>
+        <h2>Personal information</h2>
+       </div>
+      </div>
+      <form id="profile-form" novalidate>
+       <div class="form-fields">
+        <label>First name <input name="firstName" type="text" maxlength="45" autocomplete="given-name"/></label>
+        <label>Last name <input name="lastName" type="text" maxlength="45" autocomplete="family-name"/></label>
+        <label>University email <span class="hint">(cannot be changed)</span><input name="email" type="email" readonly/></label>
+        <label>Role <input name="role" type="text" readonly/></label>
+        <label id="department-field" hidden>Department <input name="department" type="text" maxlength="60"/></label>
+       </div>
+       <div aria-live="polite" class="message" hidden="" id="message" role="status"></div>
+       <button class="btn" type="submit">Save changes</button>
+      </form>
+     </section>
+    </main>
+   </div>
+  </div>
+  <script src="js/profile.js" type="module"></script>
+ </body>
+</html>

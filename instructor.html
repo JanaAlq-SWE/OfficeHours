@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dashboard &ndash; OfficeHours
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+ </head>
+ <body hidden="">
+  <div class="app-shell">
+   <aside class="sidebar">
+    <a class="brand" href="instructor.html">
+     <span class="logo">
+      ◷
+     </span>
+     OfficeHours
+    </a>
+    <nav aria-label="Main navigation" class="nav">
+     <a class="active" href="instructor.html">
+      <span class="nav-icon">
+       ▦
+      </span>
+      Dashboard
+     </a>
+     <a href="profile.html"><span class="nav-icon">☺</span> Profile</a>
+    </nav>
+   </aside>
+   <div class="workspace">
+    <header class="topbar">
+     <span class="topbar-tag">
+      OfficeHours / Dashboard
+     </span>
+     <div class="user">
+      <span class="avatar" id="header-initials" style="width:32px;height:32px;border-radius:11px">
+       OH
+      </span>
+      <strong id="user-name">
+      </strong>
+      <button class="btn ghost small" id="logout-btn" type="button">Log out</button>
+     </div>
+    </header>
+    <main class="container structured">
+     <div class="page-lead">
+      <div>
+       <p class="eyebrow">
+        INSTRUCTOR WORKSPACE
+       </p>
+       <h1>
+        Manage office hours
+       </h1>
+       <p class="sub">
+        Choose a date and publish available office-hour slots.
+       </p>
+      </div>
+     </div>
+     <section class="welcome-strip instructor-strip">
+      <div>
+       <span class="welcome-kicker">
+        YOUR TEACHING WORKSPACE
+       </span>
+       <h2>
+        Make time for meaningful conversations.
+       </h2>
+       <p>
+        Set up office hours and stay organized as students book.
+       </p>
+      </div>
+      <span aria-hidden="true" class="welcome-icon">
+       ✦
+      </span>
+     </section>
+     <div class="stats two-stats">
+      <div class="stat accent-blue">
+       <span class="label">
+        Total sessions
+       </span>
+       <span class="value" id="slot-count">
+        &mdash;
+       </span>
+      </div>
+      <div class="stat accent-violet">
+       <span class="label">
+        Open for booking
+       </span>
+       <span class="value" id="free-count">
+        &mdash;
+       </span>
+      </div>
+     </div>
+     <section aria-labelledby="instructor-calendar-title" class="card calendar-panel instructor-calendar">
+      <div class="section-head">
+       <div>
+        <p class="eyebrow">
+         01 &middot; CHOOSE A DATE
+        </p>
+        <h2 id="instructor-calendar-title">
+         Choose a date for office hours
+        </h2>
+        <p class="sub">
+         Pick a day to add availability. Days with existing sessions show a small status indicator.
+        </p>
+       </div>
+       <div class="month-switch">
+        <button aria-label="Previous month" class="icon-button" id="instructor-prev-month" type="button">
+         &lsaquo;
+        </button>
+        <strong id="instructor-month-label">
+        </strong>
+        <button aria-label="Next month" class="icon-button" id="instructor-next-month" type="button">
+         &rsaquo;
+        </button>
+       </div>
+      </div>
+      <div class="calendar-legend">
+       <span>
+        <i class="legend-dot selected">
+        </i>
+        Selected
+       </span>
+       <span>
+        <i class="legend-dot available">
+        </i>
+        Available slots
+       </span>
+      </div>
+      <div aria-hidden="true" class="weekday-grid">
+       <span>
+        Sun
+       </span>
+       <span>
+        Mon
+       </span>
+       <span>
+        Tue
+       </span>
+       <span>
+        Wed
+       </span>
+       <span>
+        Thu
+       </span>
+       <span>
+        Fri
+       </span>
+       <span>
+        Sat
+       </span>
+      </div>
+      <div aria-label="Select a day to publish office hours" class="calendar-grid" id="instructor-calendar-grid" role="group">
+      </div>
+      <div aria-live="polite" class="day-summary">
+       <div class="day-summary-head">
+        <div>
+         <span class="day-summary-kicker">
+          SELECTED DAY
+         </span>
+         <h3 id="instructor-selected-day">
+          Choose a day
+         </h3>
+        </div>
+        <button class="btn small" id="instructor-add-on-day" type="button">
+         Add a time on this day &darr;
+        </button>
+       </div>
+       <div class="day-preview-list" id="instructor-day-preview">
+        <p class="empty">
+         Choose a date to see available slots.
+        </p>
+       </div>
+      </div>
+     </section>
+     <section class="card form-section" id="instructor-add-form-section">
+      <div class="section-head">
+       <div>
+        <p class="eyebrow">
+         02 &middot; PUBLISH AVAILABILITY
+        </p>
+        <h2>
+         Create an office-hour slot
+        </h2>
+        <p class="sub">
+         The selected date is filled in automatically. Add a start and end time and a meeting location or link.
+        </p>
+       </div>
+       <span class="section-marker">
+        02
+       </span>
+      </div>
+      <form id="slot-form" novalidate="">
+       <div class="form-fields">
+        <label>
+         Date
+         <input name="date" required="" type="date"/>
+        </label>
+        <label>
+         Start time
+         <input name="startTime" required="" type="time"/>
+        </label>
+        <label>
+         End time
+         <input name="endTime" required="" type="time"/>
+        </label>
+        <label>
+         Office location
+         <span class="hint">
+          (optional if adding a link)
+         </span>
+         <input name="location" placeholder="Building and office number" type="text"/>
+        </label>
+        <label>
+         Meeting link
+         <span class="hint">
+          (optional if adding a location)
+         </span>
+         <input name="meetingLink" placeholder="https://teams.microsoft.com/&hellip;" type="url"/>
+        </label>
+       </div>
+       <div aria-live="polite" class="message" hidden="" id="message" role="status">
+       </div>
+       <button class="btn" type="submit">
+        + Publish available slot
+       </button>
+      </form>
+     </section>
+     <section class="slots-section">
+      <div class="section-head">
+       <div>
+        <p class="eyebrow">
+         03 &middot; PUBLISHED AVAILABILITY
+        </p>
+        <h2>
+         My available office-hour slots
+        </h2>
+        <p class="sub">
+         Available slots you have published for students to book.
+        </p>
+       </div>
+       <span class="section-marker">
+        03
+       </span>
+      </div>
+      <div aria-live="polite" class="message" hidden="" id="list-message" role="status"></div>
+      <div class="session-list" id="slot-list">
+       <p class="empty">
+        Loading&hellip;
+       </p>
+      </div>
+     </section>
+    
+     <!-- PBI-03: View all booked appointments -->
+     <section class="slots-section">
+      <div class="section-head">
+       <div>
+        <p class="eyebrow">04 &middot; BOOKED APPOINTMENTS</p>
+        <h2>Booked appointments (<span id="booked-count">0</span>)</h2>
+        <p class="sub">Upcoming appointments that students have booked with you.</p>
+       </div>
+       <span class="section-marker">04</span>
+      </div>
+      <div class="session-list" id="booked-list"><p class="empty">Loading&hellip;</p></div>
+     </section>
+
+    </main>
+   </div>
+  </div>
+
+  <!-- PBI-09: Edit an office-hour slot -->
+  <dialog id="edit-dialog">
+   <h3>Edit office-hour slot</h3>
+   <form id="edit-form" novalidate>
+    <div class="form-fields">
+     <label>Date <input name="date" type="date"/></label>
+     <label>Start time <input name="startTime" type="time"/></label>
+     <label>End time <input name="endTime" type="time"/></label>
+     <label>Office location <span class="hint">(optional if adding a link)</span>
+      <input name="location" placeholder="Building and office number" type="text"/></label>
+     <label>Meeting link <span class="hint">(optional if adding a location)</span>
+      <input name="meetingLink" placeholder="https://teams.microsoft.com/&hellip;" type="url"/></label>
+    </div>
+    <div aria-live="polite" class="message" hidden="" id="edit-message" role="status"></div>
+    <div class="dialog-actions">
+     <button class="btn ghost" id="edit-cancel" type="button">Cancel</button>
+     <button class="btn" type="submit">Save changes</button>
+    </div>
+   </form>
+  </dialog>
+  <script src="js/instructor.js" type="module">
+  </script>
+ </body>
+</html>

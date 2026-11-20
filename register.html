@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register – OfficeHours</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+  <aside class="auth-aside"><div class="brand"><span class="logo">◷</span> OfficeHours</div><div><p class="eyebrow">YOUR CAMPUS. YOUR SCHEDULE.</p><h2>Your time, thoughtfully organized.</h2><p>OfficeHours makes it simple for students and instructors to connect, book, and collaborate.</p></div><small>OfficeHours · A smarter campus experience</small></aside>
+  <div class="auth-main">
+  <!-- PBI-05 / Task 1.1: Registration interface -->
+  <main class="auth-card">
+    <div class="brand"><span class="logo">◷</span> OfficeHours</div>
+    <h1>Create an account</h1>
+    <p class="sub">Register as a student or an instructor.</p>
+
+    <form id="register-form" novalidate>
+      <div class="name-fields">
+        <label>First name
+          <input type="text" name="firstName" placeholder="e.g. Sara" autocomplete="given-name" maxlength="45" required>
+        </label>
+        <label>Last name
+          <input type="text" name="lastName" placeholder="Family name" autocomplete="family-name" maxlength="45" required>
+        </label>
+      </div>
+      <label>University email
+        <input type="email" name="email" placeholder="name@pnu.edu.sa" autocomplete="email">
+      </label>
+      <label>Password
+        <input type="password" name="password" placeholder="At least 6 characters" autocomplete="new-password">
+      </label>
+      <label>Confirm password
+        <input type="password" name="confirm" placeholder="Re-enter your password" autocomplete="new-password">
+      </label>
+      <fieldset class="roles">
+        <legend>I am a…</legend>
+        <label class="role"><input type="radio" name="role" value="student"> Student</label>
+        <label class="role"><input type="radio" name="role" value="instructor"> Instructor</label>
+      </fieldset>
+      <!-- PBI-12: instructors enter their department so students can search by it -->
+      <label id="department-field" hidden>Department
+        <input type="text" name="department" placeholder="e.g. Software Engineering" maxlength="60">
+      </label>
+      <div id="message" class="message" hidden></div>
+      <button type="submit" class="btn full">Register</button>
+    </form>
+
+    <p class="switch">Already have an account? <a href="index.html">Log in</a></p>
+  </main></div>
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "officehours-reminders",
+  "private": true,
+  "type": "module",
+  "scripts": { "reminders": "node scripts/send-reminders.mjs" },
+  "dependencies": { "firebase-admin": "^13.0.0" }
+}
